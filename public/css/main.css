@@ -1,0 +1,11 @@
+.header{
+	height: 70px;
+	background:#104681;
+}
+.logo{
+	margin-top: 10px;
+	margin-left: 20px;
+}
+.navbar-nav{
+	flex-direction:row !important;
+}

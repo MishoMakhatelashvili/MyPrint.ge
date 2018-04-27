@@ -1,31 +1,17 @@
 <html>
     <head>
         <title>App Name - @yield('title')</title>
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        @section('sidebar')
-            This is the master sidebar.
-        @show
-
-        <div class="container">
-            @yield('content')
+        <div class="header">
+            @yield('header')
         </div>
+
+
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

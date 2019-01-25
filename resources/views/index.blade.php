@@ -6,6 +6,20 @@
 	  @include('components.header')
 @endsection
 
+@section('slider')
+      @include('components.slider')
+@endsection
+
+@section('content')
+
+     @include('components.content')
+@endsection
+
+
+
+
+
+
 
 
 
@@ -18,3 +32,5 @@
 @section('content')
     <p>This is my body content.</p>
 @endsection
+
+

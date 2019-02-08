@@ -4,26 +4,31 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\HasOne;
 
-
-class User extends Resource
+class Product extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\\User';
+    public static $model = 'App\Models\Printer';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -31,7 +36,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'id',
     ];
 
     /**
@@ -44,25 +49,37 @@ class User extends Resource
     {
         return [
             ID::make()->sortable(),
+             BelongsTo::make('Brand'),
 
-            Gravatar::make(),
+             BelongsTo::make('Category'),
 
-            Text::make('Name')
+             Textarea::make('description')->rows(2)->displayUsing(function ($value) {
+                return str_limit($value, '40', '...');
+            }),
+               Number::make('price')
                 ->sortable()
                 ->rules('required', 'max:255'),
-
-            Text::make('Email')
+             Text::make('keywords')
                 ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
+                ->rules('required', 'max:255'),
+             Text::make('condintion')
+                ->sortable()
+                ->rules('required', 'max:255'),
+             select::make('status')->options([
+                    'show' => 'show',
+                    'hide' => 'hide',
+                ]),
+            Text::make('model')
+                ->sortable()
+                ->rules('required', 'max:255'),
+             HasMany::make('Photos'),
 
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:6')
-                ->updateRules('nullable', 'string', 'min:6'),
+             HasOne::make('Tech_detail'),
+
         ];
     }
+
+
 
     /**
      * Get the cards available for the request.

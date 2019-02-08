@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\BelongsTo;
 
 
 
@@ -45,6 +45,8 @@ class Post extends Resource
     public function fields(Request $request)
     {
         return [
+
+
             ID::make()->sortable(),
 
               Text::make('Title')
@@ -55,7 +57,7 @@ class Post extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-             BelongsTo::make('User'),
+            BelongsTo::make('user'),
 
         ];
     }

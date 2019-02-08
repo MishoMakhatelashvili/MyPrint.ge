@@ -7,6 +7,12 @@
     font-family:font2;
     src: url(fonts/bpg_ingiri_arial_1.otf);
 }
+@font-face {
+    font-family:caps;
+    src: url(fonts/bpg_mrgvlovani_caps_2010.ttf);
+}
+
+
 .header{
 	height: 70px;
 	background:#104681;
@@ -25,6 +31,11 @@
 }
 .lari{
   font-family: font2;
+}
+.lari_i{
+    font-family: font2;
+    font-size:30px;
+    float:left;
 }
 .product .title{
   margin-top: 10px;
@@ -112,3 +123,9 @@ margin-top:20px;
 .main_content{
   margin-top: 10px;
 }
+.printer_title{
+  font-family:caps;
+  font-size:17.5px;
+  font-weight: bold;
+}
+

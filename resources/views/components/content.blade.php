@@ -15,7 +15,7 @@
             <div class="col-lg-4 col-md-6 text product">
                   <div>
                       <a href="details/{{$printer->id}}" target="blank">
-                        <img class='img-fluid'  src="{{$printer->Image['0']->path}}" alt="{{$printer->keywords}}" >
+                        <img class='img-fluid'  src="/storage/{{$printer->Photos['0']->path}}" alt="{{$printer->keywords}}" >
                       </a>
                   </div>
                 <p class="text-center title"><b>{{$printer->Brand->name}} {{$printer->model}} </b></p>

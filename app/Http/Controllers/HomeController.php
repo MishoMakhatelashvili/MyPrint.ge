@@ -13,20 +13,20 @@ class HomeController extends Controller
 
     public function index()
     {
-        $printers=Printer::with('Brand','Category','Image')->get();
+        $printers=Printer::with('Brand','Category','Photos')->get();
+
 
 
         return view('index', ['printers' => $printers]);
+
+
     }
 
     public function details($id){
-        $printer=Printer::with('Brand','Category','Image')->where('product.id',$id)->get();
+        $printer=Printer::with('Brand','Category','Photos')->where('product.id',$id)->get();
 
-        dd($printer[0]->image);
-        return view('details',['printer'=>$printer]);
-
+        return view('details', ['printer' => $printer]);
 
     }
 }
 
-/*('wall_posts.post_date',[$first_date,$date])->paginate(10);*/
